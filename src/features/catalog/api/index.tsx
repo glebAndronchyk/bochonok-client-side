@@ -1,0 +1,1 @@
+export { catalogService } from "./CatalogService";

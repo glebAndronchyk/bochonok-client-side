@@ -1,11 +1,11 @@
-import { IRequestOptions } from "../types/IRequestOptions";
+import { IRequestOptions } from "../types/api";
 
 export class ApiServiceBase {
   API_URL = "http://localhost:5109" as const;
 
   constructor() {}
 
-  protected async get(path: string, { headers }: IRequestOptions = {}) {
+  protected async get<T>(path: string, { headers }: IRequestOptions = {}) {
     try {
       const response = await fetch(`${this.API_URL}/${path}`, {
         method: "GET",
@@ -19,7 +19,7 @@ export class ApiServiceBase {
         throw new Error("Failed to fetch data");
       }
 
-      return await response.json();
+      return (await response.json()) as T;
     } catch (error) {
       console.error("Error fetching data:", error);
       throw error;
