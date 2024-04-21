@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Test } from './Test';
 
 import './index.css';
+import {Header} from "../widgets/Header";
+
+const Layout = () => {
+  return <Header />
+}
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Test />
+    <Layout />
   </React.StrictMode>,
 );
