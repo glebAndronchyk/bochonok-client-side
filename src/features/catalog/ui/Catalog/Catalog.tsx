@@ -1,7 +1,7 @@
 import { ICatalogProps } from "../../types/ICatalogProps";
 import { useToggle } from "../../../../shared/lib/hooks/state/useToggle";
 import { CatalogList } from "../../../../widgets/CatalogList";
-import { CatalogButton } from "../CatalogButton";
+import { CatalogButton } from "../CatalogButton/CatalogButton";
 
 export const Catalog = ({ items }: ICatalogProps) => {
   const { toggle, isOpen } = useToggle();
