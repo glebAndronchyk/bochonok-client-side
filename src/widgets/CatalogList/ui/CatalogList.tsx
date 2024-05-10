@@ -2,14 +2,23 @@ import { classNames } from "../../../shared/lib/helpers/classNames";
 import { Card } from "../../../shared/ui";
 import { ICatalogListProps } from "../types/ICatalogListProps";
 import { useRef } from "react";
-import { useOutsideClick } from "../../../shared/lib/hooks/interaction/useOutsideClick";
+import {useOnClickOutside} from "usehooks-ts";
 
 export const CatalogList = ({ isOpen, items, toggle }: ICatalogListProps) => {
   const listRef = useRef<HTMLDivElement>(null);
 
-  useOutsideClick(listRef, toggle, [isOpen], {
-    saveToClickElementIds: ["catalog-btn"],
-  });
+  const handleClickOutside = (e: MouseEvent | TouchEvent | FocusEvent) => {
+    const target = e.target;
+
+    if (target instanceof  HTMLButtonElement && target.id === "catalog-button") {
+      e.stopPropagation();
+      return;
+    }
+
+    toggle();
+  }
+
+  useOnClickOutside(listRef, handleClickOutside)
 
   return (
     <div
