@@ -8,8 +8,7 @@ export class CatalogService extends ApiServiceBase {
 
   // TODO: add return type
   async getFullCatalog() {
-    console.log(this);
-    return await this.get<ICatalogItem[]>("Catalog/");
+    return await this.get<ICatalogItem[]>("Categories/");
   }
 }
 

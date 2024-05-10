@@ -1,7 +1,7 @@
 import { IRequestOptions } from "../types/api";
 
 export class ApiServiceBase {
-  API_URL = "http://localhost:5109" as const;
+  API_URL = "http://localhost:3001/api" as const;
 
   constructor() {}
 
