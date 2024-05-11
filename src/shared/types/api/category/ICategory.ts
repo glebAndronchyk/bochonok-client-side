@@ -6,4 +6,6 @@ export interface ICategory {
   isFavorite: boolean;
 }
 
-export interface ICategoryTransfer extends Omit<ICategory, "id"> {}
+export interface ICategoryTransfer extends Omit<ICategory, "id" | "imageB64"> {
+  image: File | null;
+}

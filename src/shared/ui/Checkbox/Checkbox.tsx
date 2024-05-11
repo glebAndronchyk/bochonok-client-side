@@ -21,15 +21,15 @@ export const CheckboxField = ({
   return (
     <Field
       disabled={disabled}
-      className={classNames("cursor-pointer flex gap-1.5 items-center", wrapperClassName)}
+      className={classNames("flex gap-1.5 items-center", wrapperClassName)}
     >
       <Checkbox
         {...props}
-        className="group p-2 rounded-md data-[checked]:bg-green-500 data-[checked]:text-white bg-white text-green-500"
+        className="cursor-pointer group border-2 border-green-500 p-2 rounded-md data-[checked]:bg-green-500 data-[checked]:text-white bg-white text-green-500"
       >
         <CheckIcon className="group-data-[checked]:opacity-100 opacity-0 w-6 h-6" />
       </Checkbox>
-      <Label className={classNames("text-sm  italic", labelClassName)}>
+      <Label className={classNames("cursor-pointer  text-sm  italic", labelClassName)}>
         {label}
       </Label>
     </Field>

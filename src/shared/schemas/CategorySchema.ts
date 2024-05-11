@@ -5,6 +5,6 @@ import { ValidationHandler } from "../lib/schemas";
 export const CategorySchema: ZodType<ICategoryTransfer> = x.object({
   title: ValidationHandler.requiredString("Title", 15),
   description: ValidationHandler.requiredString("Description", 30),
-  imageB64: x.string().min(1, "Image is required"),
+  image: x.instanceof(File),
   isFavorite: x.boolean(),
 });

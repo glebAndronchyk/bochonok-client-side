@@ -1,17 +1,21 @@
 import { Fieldset } from "@headlessui/react";
-import { InputField } from "../../shared/ui/Input/Input";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../../shared/ui";
 import { ICategoryTransfer } from "../../shared/types/api/category/ICategory";
 import { CategorySchema } from "../../shared/schemas/CategorySchema";
-import { FileUploadInput } from "../../shared/ui/FileUploadInput";
-import { CheckboxField } from "../../shared/ui/Checkbox/Checkbox";
+import {
+  FileUploadInput,
+  CheckboxField,
+  InputField,
+  Button,
+} from "../../shared/ui";
+import { useRootState } from "../../shared/wrappers/MobxProvider";
+import { FileParser } from "../../shared/lib/parsers/FileParser";
 
 const initialState: ICategoryTransfer = {
   description: "",
   title: "",
-  imageB64: "",
+  image: null,
   isFavorite: false,
 };
 
@@ -26,11 +30,16 @@ export const AddCategoryForm = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (val: ICategoryTransfer) => console.log(val);
+  const { modal } = useRootState();
+
+  const onSubmit = async ({ image, ...data }: ICategoryTransfer) => {
+    const imgB64 = await FileParser.tob64(image!);
+    modal.closeModal();
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Fieldset>
+    <form className="p-2" onSubmit={handleSubmit(onSubmit)}>
+      <Fieldset className="flex flex-col gap-4">
         <Controller
           control={control}
           name="title"
@@ -59,13 +68,14 @@ export const AddCategoryForm = () => {
         />
         <Controller
           control={control}
-          name="imageB64"
+          name="image"
           render={({ field, fieldState }) => (
             <FileUploadInput
               label="Upload image*"
-              description="Provide a picture in which ONLY 1 object is clearly visible, on a contrasting one"
-              onChange={field.onChange}
-              value={field.value}
+              description="Provide an image with ONLY ONE object in contrast"
+              onChange={(event) => {
+                field.onChange(event.target.files![0]);
+              }}
               accept="image/*"
             />
           )}

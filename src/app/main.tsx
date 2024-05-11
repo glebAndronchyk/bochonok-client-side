@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <MobxProvider>
       <ModalWrapper>
         <Layout>
-          <AddCategoryForm />
+          123
         </Layout>
       </ModalWrapper>
     </MobxProvider>

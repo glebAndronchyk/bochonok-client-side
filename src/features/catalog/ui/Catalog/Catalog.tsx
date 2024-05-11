@@ -3,11 +3,19 @@ import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { CatalogButton } from "../CatalogButton/CatalogButton";
 import { Card } from "../../../../shared/ui";
 import { ScaleTransition } from "../../../../shared/ui";
+import { useRootState } from "../../../../shared/wrappers/MobxProvider";
+import { PlusIcon } from "@heroicons/react/20/solid";
 
 export const Catalog = ({ items }: ICatalogProps) => {
+  const { modal } = useRootState();
+
+  const handleAddCategory = () => {
+    modal.openModal("addCategory");
+  };
+
   return (
     <Menu>
-      {({ open }) => (
+      {({ open, close }) => (
         <>
           <MenuButton as="div">
             <CatalogButton />
@@ -23,15 +31,19 @@ export const Catalog = ({ items }: ICatalogProps) => {
                   key={item.id}
                   description={item.description}
                   title={item.title}
-                  imgSrc={item.imageB64}
+                  img={item.imageB64}
                 />
               ))}
               <Card.Horizontal
-                onClick={() => {}}
+                as="button"
+                onClick={() => {
+                  close();
+                  handleAddCategory();
+                }}
                 key="add-category"
                 description="Press to add category"
                 title="New Category"
-                imgSrc={""}
+                img={<PlusIcon className="w-5 h-5" />}
               />
             </MenuItems>
           </ScaleTransition>
