@@ -1,10 +1,10 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import { ScaleTransition } from "../transitions";
 import { IModalProps } from "./types";
+import { OpacityTransition } from "../transitions";
 
 export const Modal = ({ onClose, title, children, shown }: IModalProps) => {
   return (
-    <ScaleTransition shown={shown}>
+    <OpacityTransition shown={shown}>
       <Dialog
         onClose={onClose}
         className="inset-0 fixed w-screen h-screen z-50"
@@ -18,6 +18,6 @@ export const Modal = ({ onClose, title, children, shown }: IModalProps) => {
           </DialogPanel>
         </div>
       </Dialog>
-    </ScaleTransition>
+    </OpacityTransition>
   );
 };
