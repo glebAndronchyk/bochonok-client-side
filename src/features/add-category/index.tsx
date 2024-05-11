@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../../shared/ui";
 import { ICategoryTransfer } from "../../shared/types/api/category/ICategory";
 import { CategorySchema } from "../../shared/schemas/CategorySchema";
+import { FileUploadInput } from "../../shared/ui/FileUploadInput";
 
 const initialState: ICategoryTransfer = {
   description: "",
@@ -24,7 +25,7 @@ export const AddCategoryForm = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (val: ICategoryTransfer) => 1;
+  const onSubmit = (val: ICategoryTransfer) => console.log(val);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -52,6 +53,18 @@ export const AddCategoryForm = () => {
               value={field.value}
               description="Make it interesting too"
               errorMessage={fieldState.error?.message}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="imageB64"
+          render={({ field, fieldState }) => (
+            <FileUploadInput
+              onChange={field.onChange}
+              value={field.value}
+              label="Upload image"
+              accept="image/*"
             />
           )}
         />
