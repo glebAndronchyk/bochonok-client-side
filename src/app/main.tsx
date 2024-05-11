@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.css";
-import { Header } from "../widgets/Header";
+import { MobxProvider } from "../shared/wrappers/MobxProvider";
+import { Layout } from "./layout";
 
-const Layout = () => {
-  return <Header />;
-};
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Layout />
+    <MobxProvider>
+      <Layout>123</Layout>
+    </MobxProvider>
   </React.StrictMode>,
 );
