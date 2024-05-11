@@ -2,7 +2,7 @@ import { ICatalogProps } from "../../types/ICatalogProps";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { CatalogButton } from "../CatalogButton/CatalogButton";
 import { Card } from "../../../../shared/ui";
-import { ScaleTransition } from "../../../../shared/ui/transitions/ScaleTransition";
+import { ScaleTransition } from "../../../../shared/ui";
 
 export const Catalog = ({ items }: ICatalogProps) => {
   return (
