@@ -1,5 +1,5 @@
-import {ICategory} from "../../../shared/types/api";
+import {ICategoryNumerated} from "../../../shared/types/api";
 
 export interface ICatalogProps {
-  items: ICategory[];
+  items: ICategoryNumerated[];
 }

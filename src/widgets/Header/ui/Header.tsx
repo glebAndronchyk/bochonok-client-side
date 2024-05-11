@@ -1,16 +1,15 @@
 import { Logo } from "../../../shared/ui";
 import { Catalog, catalogService } from "../../../features/catalog";
-import { useServiceFetcher } from "../../../shared/lib/hooks/fetch/useServiceFetcher";
+import { observer } from "mobx-react";
+import { useRootState } from "../../../shared/wrappers/MobxProvider";
 
-export const Header = () => {
-  const { data } = useServiceFetcher(
-    catalogService.getFullCatalog.bind(catalogService),
-  );
+export const Header = observer(() => {
+  const { categories } = useRootState();
 
   return (
     <header className="flex gap-12 items-center p-3 shadow-md bg-white">
       <Logo />
-      <Catalog items={data || []} />
+      <Catalog items={categories.catalogList} />
     </header>
   );
-};
+});

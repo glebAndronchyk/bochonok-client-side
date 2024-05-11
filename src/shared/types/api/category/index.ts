@@ -1,1 +1,1 @@
-export type { ICategory } from "./ICategory";
+export type { ICategoryNumerated } from "./ICategory";

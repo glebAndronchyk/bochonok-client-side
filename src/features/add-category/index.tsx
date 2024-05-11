@@ -11,6 +11,7 @@ import {
 } from "../../shared/ui";
 import { useRootState } from "../../shared/wrappers/MobxProvider";
 import { FileParser } from "../../shared/lib/parsers/FileParser";
+import { catalogService } from "../catalog";
 
 const initialState: ICategoryTransfer = {
   description: "",
@@ -30,10 +31,16 @@ export const AddCategoryForm = () => {
     mode: "onChange",
   });
 
-  const { modal } = useRootState();
+  const { modal, categories } = useRootState();
 
   const onSubmit = async ({ image, ...data }: ICategoryTransfer) => {
-    const imgB64 = await FileParser.tob64(image!);
+    const imageB64 = await FileParser.tob64(image!);
+    const category = {
+      ...data,
+      imageB64,
+    };
+    const newCategoryId = await catalogService.addCategory(category);
+    categories.addCatalogItem({ ...category, id: newCategoryId });
     modal.closeModal();
   };
 
