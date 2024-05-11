@@ -6,6 +6,7 @@ import { Button } from "../../shared/ui";
 import { ICategoryTransfer } from "../../shared/types/api/category/ICategory";
 import { CategorySchema } from "../../shared/schemas/CategorySchema";
 import { FileUploadInput } from "../../shared/ui/FileUploadInput";
+import { CheckboxField } from "../../shared/ui/Checkbox/Checkbox";
 
 const initialState: ICategoryTransfer = {
   description: "",
@@ -35,7 +36,7 @@ export const AddCategoryForm = () => {
           name="title"
           render={({ field, fieldState }) => (
             <InputField
-              label="Enter title"
+              label="Enter title*"
               onChange={field.onChange}
               value={field.value}
               description="Make it interesting"
@@ -48,7 +49,7 @@ export const AddCategoryForm = () => {
           name="description"
           render={({ field, fieldState }) => (
             <InputField
-              label="Enter Description"
+              label="Enter Description*"
               onChange={field.onChange}
               value={field.value}
               description="Make it interesting too"
@@ -61,15 +62,21 @@ export const AddCategoryForm = () => {
           name="imageB64"
           render={({ field, fieldState }) => (
             <FileUploadInput
+              label="Upload image*"
               description="Provide a picture in which ONLY 1 object is clearly visible, on a contrasting one"
               onChange={field.onChange}
               value={field.value}
-              label="Upload image"
               accept="image/*"
             />
           )}
         />
-        {/*<InputField />*/}
+        <Controller
+          control={control}
+          name="isFavorite"
+          render={({ field }) => (
+            <CheckboxField onChange={field.onChange} label="Mark as favorite" />
+          )}
+        />
         <Button disabled={!isValid} variants={["md", "dark"]} type="submit">
           Submit
         </Button>
