@@ -1,2 +1,2 @@
 export { MobxProvider } from "./MobxProvider";
-export * from "./setting";
+export * from "./settings";

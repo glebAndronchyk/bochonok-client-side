@@ -5,11 +5,14 @@ import { MobxProvider } from "../shared/wrappers/MobxProvider";
 import { Layout } from "./layout";
 
 import "./index.css";
+import { ModalWrapper } from "../shared/wrappers/ModalWrapper";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <MobxProvider>
-      <Layout>123</Layout>
+      <ModalWrapper>
+        <Layout>123</Layout>
+      </ModalWrapper>
     </MobxProvider>
   </React.StrictMode>,
 );

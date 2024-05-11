@@ -1,4 +1,4 @@
-import { MobxContext } from "./setting";
+import { MobxContext } from "./settings";
 import { PropsWithChildren } from "react";
 import { RootStore } from "../../store/RootStore";
 
