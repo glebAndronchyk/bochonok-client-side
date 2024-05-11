@@ -1,5 +1,5 @@
 import {ApiServiceBase} from "../../../../shared/api/ApiServiceBase";
-import {ICatalogItem} from "../../../../shared/types/api";
+import {ICategory} from "../../../../shared/types/api";
 
 export class CatalogService extends ApiServiceBase {
   constructor() {
@@ -8,7 +8,7 @@ export class CatalogService extends ApiServiceBase {
 
   // TODO: add return type
   async getFullCatalog() {
-    return await this.get<ICatalogItem[]>("Categories/");
+    return await this.get<ICategory[]>("Categories/");
   }
 }
 

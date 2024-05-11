@@ -1,7 +1,4 @@
-import {
-  Button as HButton,
-  ButtonProps as HButtonProps,
-} from "@headlessui/react";
+import { Button as HButton } from "@headlessui/react";
 import { useMemo } from "react";
 import { classNames } from "../../lib/helpers/classNames";
 import { IButtonProps } from "./types";

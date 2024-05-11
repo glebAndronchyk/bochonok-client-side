@@ -11,13 +11,13 @@ import { classNames } from "../../lib/helpers/classNames";
 interface InputFieldProps extends InputProps {
   label: ReactNode | string;
   description: ReactNode | string;
-  errorMessage: string;
+  errorMessage?: string;
 }
 
 export const InputField = ({
   label,
   description,
-  errorMessage,
+  errorMessage = "",
   disabled,
   ...props
 }: InputFieldProps) => {
@@ -28,12 +28,12 @@ export const InputField = ({
     >
       <Label
         className={classNames(
-          "flex flex-col gap-0.5",
+          "flex flex-col gap-0.5 font-semibold",
           errorMessage && "text-red-700",
         )}
       >
         {label && label}
-        <Description>
+        <Description className="font-normal text-sm italic">
           {description && description}{" "}
           {errorMessage && <span> - {errorMessage}</span>}
         </Description>
