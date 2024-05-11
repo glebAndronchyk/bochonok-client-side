@@ -14,7 +14,7 @@ const Horizontal = ({
     () =>
       typeof img === "string" ? (
         <img
-          className="shrink-0"
+          className="shrink-0 object-contain w-24 h-24"
           width={70}
           height={70}
           src={img}
@@ -28,7 +28,7 @@ const Horizontal = ({
   return (
     <WrapperComponent
       onClick={onClick}
-      className="flex gap-2 hover:bg-green-400 items-center transition-all p-2 rounded-md cursor-pointer"
+      className="flex gap-4 hover:bg-green-400 items-center transition-all p-2 rounded-md cursor-pointer"
     >
       {ImageComponent}
       <div>

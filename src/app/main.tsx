@@ -6,7 +6,6 @@ import { Layout } from "./layout";
 
 import "./index.css";
 import { ModalWrapper } from "../shared/wrappers/ModalWrapper";
-import { AddCategoryForm } from "../features/add-category";
 import { InitFetchersWrapper } from "../shared/wrappers/InitFetchersWrapper/InitFetchersWrapper";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
