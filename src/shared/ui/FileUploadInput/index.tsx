@@ -1,10 +1,10 @@
 import { Input, InputProps } from "@headlessui/react";
 import { Button } from "../Button/Button";
 import { useRef } from "react";
+import { InputFieldWrapper } from "../InputFieldWrapper/InputFieldWrapper";
+import { IInputFieldProps } from "../Input/types/IInputFieldProps";
 
-interface IFileUploadInputProps extends Omit<InputProps, "className"> {
-  label: string;
-}
+interface IFileUploadInputProps extends Omit<IInputFieldProps, "className"> {}
 
 export const FileUploadInput = ({ label, ...props }: IFileUploadInputProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -14,7 +14,11 @@ export const FileUploadInput = ({ label, ...props }: IFileUploadInputProps) => {
   };
 
   return (
-    <>
+    <InputFieldWrapper
+      label={label}
+      disabled={props.disabled}
+      description={props.description}
+    >
       <Input ref={inputRef} type="file" {...props} className="hidden" />
       <Button
         onClick={handleFilePick}
@@ -23,6 +27,6 @@ export const FileUploadInput = ({ label, ...props }: IFileUploadInputProps) => {
       >
         {label}
       </Button>
-    </>
+    </InputFieldWrapper>
   );
 };

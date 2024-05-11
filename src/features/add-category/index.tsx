@@ -61,6 +61,7 @@ export const AddCategoryForm = () => {
           name="imageB64"
           render={({ field, fieldState }) => (
             <FileUploadInput
+              description="Provide a picture in which ONLY 1 object is clearly visible, on a contrasting one"
               onChange={field.onChange}
               value={field.value}
               label="Upload image"

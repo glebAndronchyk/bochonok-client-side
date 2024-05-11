@@ -1,7 +1,7 @@
-import { Description, Field, Input, Label } from "@headlessui/react";
+import { Input } from "@headlessui/react";
 import { classNames } from "../../lib/helpers/classNames";
 import { IInputFieldProps } from "./types/IInputFieldProps";
-import { InputLabel } from "../InputLabel/InputLabel";
+import { InputFieldWrapper } from "../InputFieldWrapper/InputFieldWrapper";
 
 export const InputField = ({
   label,
@@ -11,15 +11,12 @@ export const InputField = ({
   ...props
 }: IInputFieldProps) => {
   return (
-    <Field
+    <InputFieldWrapper
+      label={label}
+      description={description}
+      errorMessage={errorMessage}
       disabled={disabled}
-      className="flex flex-col gap-0.5 data-[disabled]:opacity-50"
     >
-      <InputLabel
-        label={label}
-        description={description}
-        errorMessage={errorMessage}
-      />
       <Input
         {...props}
         className={classNames(
@@ -27,6 +24,6 @@ export const InputField = ({
           errorMessage && "text-red-900 border-red-700",
         )}
       />
-    </Field>
+    </InputFieldWrapper>
   );
 };
