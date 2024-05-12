@@ -4,6 +4,7 @@ import { productsService } from "../../../../shared/api/ProductsService";
 import { EmptyList } from "../../../../shared/ui/EmptyList/EmptyList";
 import { observer } from "mobx-react";
 import { classNames } from "../../../../shared/lib/helpers/classNames";
+import { ProductCard } from "../../../../shared/ui";
 
 interface IListComponentProps {
   activeCategory: string | null;
@@ -15,8 +16,6 @@ export const ListComponent = observer(
     const { products, modal } = useRootState();
 
     useEffect(() => {
-      if (!activeCategory) return;
-
       productsService.getProductsList(activeCategory).then((productsList) => {
         products.setSimplifiedProductsList(productsList);
       });
@@ -32,7 +31,9 @@ export const ListComponent = observer(
       <div
         className={classNames(
           "min-h-[65vh]",
-          isWithProducts ? "" : "flex items-center justify-center",
+          isWithProducts
+            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            : "flex items-center justify-center",
         )}
       >
         {!products.simplifiedProducts.length && (
@@ -42,12 +43,9 @@ export const ListComponent = observer(
             onAddNew={onAddNewProduct}
           />
         )}
-        {/*{products.productsList.map((product) => (*/}
-        {/*  <div key={product.id}>*/}
-        {/*    <h2>{product.name}</h2>*/}
-        {/*    <p>{product.description}</p>*/}
-        {/*  </div>*/}
-        {/*))}*/}
+        {products.simplifiedProducts.map((product) => (
+          <ProductCard key={product.id} {...product} />
+        ))}
       </div>
     );
   },
