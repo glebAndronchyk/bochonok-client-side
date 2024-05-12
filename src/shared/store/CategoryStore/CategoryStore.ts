@@ -17,10 +17,10 @@ export class CategoryStore {
     this.catalogList.push(item);
   }
 
-  toListBoxFormat(item: ICategory): IListBoxValue {
+  toListBoxFormat(item?: ICategory | null): IListBoxValue {
     return {
-      value: item.id,
-      label: item.title,
+      value: item?.id || "",
+      label: item?.title || "",
     };
   }
 

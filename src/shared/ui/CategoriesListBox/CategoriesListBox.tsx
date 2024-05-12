@@ -4,7 +4,7 @@ import { Mapper } from "../../lib/helpers/mapper";
 import { ListBox } from "../ListBox/ListBox";
 import { useMemo } from "react";
 import { IListBoxProps } from "../ListBox/types";
-import { allValue } from "../ListBox/settings/staticFields";
+import { allValue, noRecord } from "../ListBox/settings/staticFields";
 
 interface ICategoriesListBoxProps extends Pick<IListBoxProps, "onChange"> {
   activeCategory: string | null;
@@ -22,6 +22,11 @@ export const CategoriesListBox = observer(
 
     const selectedCategory = useMemo(() => {
       const activeCategoryFromList = categories.find(activeCategory);
+
+      if (!withAllValue) {
+        return categories.toListBoxFormat(activeCategoryFromList);
+      }
+
       if (activeCategory === null || !activeCategoryFromList) {
         return allValue;
       }

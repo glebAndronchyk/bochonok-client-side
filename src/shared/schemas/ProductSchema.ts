@@ -9,5 +9,14 @@ export const ProductSchema: ZodType<IProductTransfer> = x.object({
   longDescription: ValidationHandler.requiredString("Long description", 300),
   price: x.coerce.number().min(0.01, "Price must be greater than 0"),
   image: x.instanceof(File),
-  categoryId: ValidationHandler.requiredString("Category", 50),
+  category: x.object({
+    value: ValidationHandler.requiredString(
+      "Related category is required",
+      300,
+    ),
+    label: ValidationHandler.requiredString(
+      "Related category is required",
+      300,
+    ),
+  }),
 });
