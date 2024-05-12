@@ -48,7 +48,7 @@ export const AddCategoryForm = () => {
   };
 
   return (
-    <form className="p-2" onSubmit={handleSubmit(onSubmit)}>
+    <form className="p-2 w-[40vw]" onSubmit={handleSubmit(onSubmit)}>
       <Fieldset className="flex flex-col gap-4">
         <Controller
           control={control}

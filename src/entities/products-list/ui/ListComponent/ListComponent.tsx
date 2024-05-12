@@ -12,7 +12,7 @@ interface IListComponentProps {
 // TODO: add virtualization
 export const ListComponent = observer(
   ({ activeCategory }: IListComponentProps) => {
-    const { products } = useRootState();
+    const { products, modal } = useRootState();
 
     useEffect(() => {
       if (!activeCategory) return;
@@ -24,18 +24,22 @@ export const ListComponent = observer(
 
     const isWithProducts = products.simplifiedProducts.length > 0;
 
+    const onAddNewProduct = () => {
+      modal.openModal("addProduct");
+    };
+
     return (
       <div
         className={classNames(
           "min-h-[60vh]",
-          !isWithProducts ? "flex items-center justify-center" : "",
+          isWithProducts ? "" : "flex items-center justify-center",
         )}
       >
         {!products.simplifiedProducts.length && (
           <EmptyList
             emptyText="No products in this category."
             addNewText="Add new :D."
-            onAddNew={() => {}}
+            onAddNew={onAddNewProduct}
           />
         )}
         {/*{products.productsList.map((product) => (*/}
