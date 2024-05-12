@@ -3,7 +3,7 @@ import { ListHeader } from "../ListhHeader/ListHeader";
 
 export const ProductsList = () => {
   return (
-    <div>
+    <div className="bg-white rounded-lg shadow-md p-4">
       <ListHeader />
       <ListComponent />
     </div>

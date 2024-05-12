@@ -17,7 +17,7 @@ export const ListComponent = () => {
   }, [activeCategory]);
 
   return (
-    <div>
+    <div className="">
       {/*{products.productsList.map((product) => (*/}
       {/*  <div key={product.id}>*/}
       {/*    <h2>{product.name}</h2>*/}

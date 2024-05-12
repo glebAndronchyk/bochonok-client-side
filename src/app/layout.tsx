@@ -6,7 +6,11 @@ export const Layout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <main className="w-full h-full flex flex-col items-center">
+        <div className="p-6 max-w-5xl w-full">
+          <Outlet />
+        </div>
+      </main>
     </>
   );
 };
