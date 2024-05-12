@@ -4,7 +4,7 @@ import { CatalogButton } from "../CatalogButton/CatalogButton";
 import { Card } from "../../../../shared/ui";
 import { ScaleTransition } from "../../../../shared/ui";
 import { useRootState } from "../../../../shared/wrappers/MobxProvider";
-import { PlusIcon } from "@heroicons/react/20/solid";
+import { PlusIcon, StarIcon } from "@heroicons/react/20/solid";
 
 export const Catalog = ({ items }: ICatalogProps) => {
   const { modal } = useRootState();
@@ -26,16 +26,20 @@ export const Catalog = ({ items }: ICatalogProps) => {
               className="bg-white p-4 rounded-lg shadow-lg overflow-y-scroll no-scrollbar w-96"
             >
               {items.map((item) => (
-                <Card.Horizontal
-                  onClick={() => {}}
-                  key={item.id}
-                  description={item.description}
-                  title={item.title}
-                  img={item.imageB64}
-                />
+                <div className="relative">
+                  <Card.Horizontal
+                    onClick={() => {}}
+                    key={item.id}
+                    description={item.description}
+                    title={item.title}
+                    img={item.imageB64}
+                  />
+                  {item.isFavorite && (
+                    <StarIcon className="w-5 h-5 text-yellow-400 absolute top-2 right-2" />
+                  )}
+                </div>
               ))}
               <Card.Horizontal
-                as="div"
                 onClick={() => {
                   close();
                   handleAddCategory();
