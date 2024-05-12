@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useRootState } from "../../../../shared/wrappers/MobxProvider";
 import { productsService } from "../../../../shared/api/ProductsService";
-import { useCategoryParam } from "../../../../shared/lib/hooks/navigation/useCategoryParam";
+
+interface IListComponentProps {
+  activeCategory: string | null;
+}
 
 // TODO: add virtualization
-export const ListComponent = () => {
+export const ListComponent = ({ activeCategory }: IListComponentProps) => {
   const { products } = useRootState();
-  const activeCategory = useCategoryParam();
 
   useEffect(() => {
     if (!activeCategory) return;

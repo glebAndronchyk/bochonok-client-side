@@ -15,4 +15,8 @@ export class CategoryStore {
   addCatalogItem(item: ICategory) {
     this.catalogList.push(item);
   }
+
+  find(id: string) {
+    return this.catalogList.find((item) => item.id === id);
+  }
 }
