@@ -5,18 +5,18 @@ import { Card } from "../../../../shared/ui";
 import { ScaleTransition } from "../../../../shared/ui";
 import { useRootState } from "../../../../shared/wrappers/MobxProvider";
 import { PlusIcon, StarIcon } from "@heroicons/react/20/solid";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Catalog = ({ items }: ICatalogProps) => {
   const { modal } = useRootState();
-  const [_, setParam] = useSearchParams();
+  const navigate = useNavigate();
 
   const handleAddCategory = () => {
     modal.openModal("addCategory");
   };
 
-  const handleCategoryClick = (id: string) => () => {
-    setParam(`category=${id}`);
+  const handleCategoryClick = (id: string) => {
+    navigate(`/?category=${id}`);
   };
 
   return (
@@ -34,7 +34,10 @@ export const Catalog = ({ items }: ICatalogProps) => {
               {items.map((item) => (
                 <div className="relative">
                   <Card.Horizontal
-                    onClick={handleCategoryClick(item.id)}
+                    onClick={() => {
+                      close();
+                      handleCategoryClick(item.id);
+                    }}
                     key={item.id}
                     description={item.description}
                     title={item.title}
