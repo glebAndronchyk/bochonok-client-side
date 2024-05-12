@@ -7,18 +7,16 @@ export class ProductsService extends ApiServiceBase {
     super();
   }
 
-  getProductsList = async () => {
-    return await this.get<ISimplifiedProduct[]>("Products/");
+  getProductsList = async (categoryId: string | null = null) => {
+    const fetchPath = categoryId
+      ? "Products/Category/" + categoryId
+      : "Products/";
+
+    return await this.get<ISimplifiedProduct[]>(fetchPath);
   };
 
   getProduct = async (id: string) => {
     return await this.get<IProduct>(`Products/${id}`);
-  };
-
-  getProductsByCategory = async (categoryId: string) => {
-    return await this.get<ISimplifiedProduct[]>(
-      `Products/Category/${categoryId}`,
-    );
   };
 
   addProduct = async (category: ICategoryTransferB64) => {
@@ -33,4 +31,4 @@ export class ProductsService extends ApiServiceBase {
   };
 }
 
-const productsService = new ProductsService();
+export const productsService = new ProductsService();

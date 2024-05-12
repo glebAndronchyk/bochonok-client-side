@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ProductsList } from "../entities/products-list";
 import { Layout } from "./layout";
+import { InitFetchersWrapper } from "../shared/wrappers/InitFetchersWrapper/InitFetchersWrapper";
 
 export class Router {
   constructor() {}
@@ -8,7 +9,11 @@ export class Router {
   create() {
     return createBrowserRouter([
       {
-        element: <Layout />,
+        element: (
+          <InitFetchersWrapper>
+            <Layout />
+          </InitFetchersWrapper>
+        ),
         children: [
           {
             path: "/",
