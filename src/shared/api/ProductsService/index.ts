@@ -1,6 +1,6 @@
 import { ApiServiceBase } from "../ApiServiceBase";
-import { ICategoryTransferB64 } from "../../types/api/category";
 import { IProduct, ISimplifiedProduct } from "../../types/api/product";
+import { IProductTransferB64 } from "../../types/api/product/IProductTransfer";
 
 export class ProductsService extends ApiServiceBase {
   constructor() {
@@ -19,8 +19,11 @@ export class ProductsService extends ApiServiceBase {
     return await this.get<IProduct>(`Products/${id}`);
   };
 
-  addProduct = async (category: ICategoryTransferB64) => {
-    return await this.post<string>("Products/", JSON.stringify(category));
+  addProduct = async (category: IProductTransferB64) => {
+    return await this.post<ISimplifiedProduct>(
+      "Products/",
+      JSON.stringify(category),
+    );
   };
 
   changeProductRating = async (id: string, rating: number) => {

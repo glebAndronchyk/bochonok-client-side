@@ -6,11 +6,15 @@ import { FileUploadInput, InputField, SubmitButton } from "../../../shared/ui";
 import { Fieldset } from "@headlessui/react";
 import { Textarea } from "../../../shared/ui/Textarea/Textarea";
 import { CategorySelector } from "./CategorySelector";
+import { productsService } from "../../../shared/api/ProductsService";
+import { FileParser } from "../../../shared/lib/parsers/FileParser";
+import { IProductTransferB64 } from "../../../shared/types/api/product/IProductTransfer";
+import { useRootState } from "../../../shared/wrappers/MobxProvider";
 
 const initialState: IProductTransfer = {
   title: "",
   description: "",
-  price: 0,
+  price: 1,
   image: null,
   longDescription: "",
   category: {
@@ -25,15 +29,23 @@ export const AddProductForm = () => {
     control,
     handleSubmit,
     formState: { isValid },
-    getValues,
   } = useForm<IProductTransfer>({
     defaultValues: initialState,
     resolver: zodResolver(ProductSchema),
     mode: "onChange",
   });
+  const { modal, products } = useRootState();
 
-  const onSubmit = (data: IProductTransfer) => {
-    console.log(data);
+  const onSubmit = async ({ image, category, ...data }: IProductTransfer) => {
+    const imageB64 = await FileParser.tob64(image!);
+    const product: IProductTransferB64 = {
+      ...data,
+      imageB64,
+      categoryId: category.value,
+    };
+    const simplifiedProduct = await productsService.addProduct(product);
+    products.addSimplifiedProductItem(simplifiedProduct);
+    modal.closeModal();
   };
 
   return (
