@@ -46,14 +46,14 @@ export const CategorySelector = observer(
     };
 
     return (
-      <p className="text-sm">
-        Active category:{" "}
+      <div className="text-sm flex items-center gap-2">
+        <span>Active category: </span>
         <ListBox
           onChange={handleCategoryChange}
           selectedValue={selectedCategory}
           values={categoriesListBox}
         />
-      </p>
+      </div>
     );
   },
 );
