@@ -31,8 +31,12 @@ export const ListBox = ({ selectedValue, values, ...props }: IListBoxProps) => {
                   key={value.value}
                   value={value}
                 >
-                  {value.label}
-                  <CheckIcon className="w-5 h-5" />
+                  {({ selected }) => (
+                    <>
+                      {value.label}
+                      {selected && <CheckIcon className="w-5 h-5" />}
+                    </>
+                  )}
                 </ListboxOption>
               ))}
             </ListboxOptions>
