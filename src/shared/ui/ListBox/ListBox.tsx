@@ -20,7 +20,7 @@ export const ListBox = ({ selectedValue, values, ...props }: IListBoxProps) => {
           </ListboxButton>
           <ScaleTransition shown={open}>
             <ListboxOptions
-              className="no-scrollbar [--anchor-gap:1rem] w-28 p-2 bg-white rounded-md shadow-xl "
+              className="no-scrollbar z-50 [--anchor-gap:1rem] w-28 p-2 bg-white rounded-md shadow-xl "
               anchor="bottom"
             >
               {values.map((item) => (

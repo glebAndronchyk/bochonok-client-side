@@ -26,10 +26,6 @@ export const CategoriesListBox = observer(
         return allValue;
       }
 
-      if (!withAllValue) {
-        return categories.toListBoxFormat(categories.catalogList?.[0]);
-      }
-
       return categories.toListBoxFormat(activeCategoryFromList);
     }, [activeCategory]);
 
