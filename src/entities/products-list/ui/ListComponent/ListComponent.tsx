@@ -31,7 +31,7 @@ export const ListComponent = observer(
     return (
       <div
         className={classNames(
-          "min-h-[60vh]",
+          "min-h-[65vh]",
           isWithProducts ? "" : "flex items-center justify-center",
         )}
       >

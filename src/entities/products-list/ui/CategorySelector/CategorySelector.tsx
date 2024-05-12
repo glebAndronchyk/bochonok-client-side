@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { IListBoxValue } from "../../../../shared/ui/ListBox/types";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { allValue } from "../../../../shared/ui/ListBox/settings/staticFields";
 import { useRootState } from "../../../../shared/wrappers/MobxProvider";
 import { ListBox } from "../../../../shared/ui/ListBox/ListBox";
 import { IProductListHeaderProps } from "../../types/IProductListHeaderProps";
 import { observer } from "mobx-react";
+import { ICategory } from "../../../../shared/types/api/category";
 
 interface ICategorySelectorProps
   extends Pick<IProductListHeaderProps, "activeCategory"> {}
@@ -15,8 +16,8 @@ export const CategorySelector = observer(
     const navigate = useNavigate();
     const { categories } = useRootState();
 
-    const mapCategoriesToListbox = (): IListBoxValue[] => {
-      return categories.catalogList.map((category) => {
+    const mapCategoriesToListbox = (list: ICategory[]): IListBoxValue[] => {
+      return list.map((category) => {
         return {
           value: category.id,
           label: category.title,
@@ -24,10 +25,10 @@ export const CategorySelector = observer(
       });
     };
 
-    const categoriesListBox = useMemo(
-      () => [allValue, ...mapCategoriesToListbox()],
-      [categories.catalogList],
-    );
+    const categoriesListBox = [
+      allValue,
+      ...mapCategoriesToListbox(categories.catalogList),
+    ];
 
     const selectedCategory = useMemo(() => {
       const activeCategoryFromList = categories.find(activeCategory);
