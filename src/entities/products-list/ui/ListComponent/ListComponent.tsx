@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRootState } from "../../../../shared/wrappers/MobxProvider";
-import { useCategoryParam } from "../../../../shared/lib/hooks/fetch/useCategoryParam";
 import { productsService } from "../../../../shared/api/ProductsService";
+import { useCategoryParam } from "../../../../shared/lib/hooks/navigation/useCategoryParam";
 
 // TODO: add virtualization
 export const ListComponent = () => {
