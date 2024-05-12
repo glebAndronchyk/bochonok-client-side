@@ -5,10 +5,10 @@ import { CategorySchema } from "../../../shared/schemas/CategorySchema";
 import { useRootState } from "../../../shared/wrappers/MobxProvider";
 import { FileParser } from "../../../shared/lib/parsers/FileParser";
 import {
-  Button,
   CheckboxField,
   FileUploadInput,
   InputField,
+  SubmitButton,
 } from "../../../shared/ui";
 import {
   ICategoryTransferB64,
@@ -97,9 +97,7 @@ export const AddCategoryForm = () => {
             <CheckboxField onChange={field.onChange} label="Mark as favorite" />
           )}
         />
-        <Button disabled={!isValid} variants={["md", "dark"]} type="submit">
-          Submit
-        </Button>
+        <SubmitButton disabled={!isValid} />
       </Fieldset>
     </form>
   );

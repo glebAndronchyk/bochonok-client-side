@@ -2,9 +2,10 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IProductTransfer } from "../../../shared/types/api/product";
 import { ProductSchema } from "../../../shared/schemas/ProductSchema";
-import { Button, FileUploadInput, InputField } from "../../../shared/ui";
+import { FileUploadInput, InputField, SubmitButton } from "../../../shared/ui";
 import { Fieldset } from "@headlessui/react";
 import { Textarea } from "../../../shared/ui/Textarea/Textarea";
+import { CategorySelector } from "./CategorySelector";
 
 const initialState: IProductTransfer = {
   title: "",
@@ -12,7 +13,10 @@ const initialState: IProductTransfer = {
   price: 0,
   image: null,
   longDescription: "",
-  categoryId: "",
+  category: {
+    value: "",
+    label: "",
+  },
   soldBy: "",
 };
 
@@ -21,6 +25,7 @@ export const AddProductForm = () => {
     control,
     handleSubmit,
     formState: { isValid },
+    getValues,
   } = useForm<IProductTransfer>({
     defaultValues: initialState,
     resolver: zodResolver(ProductSchema),
@@ -101,20 +106,19 @@ export const AddProductForm = () => {
             />
           )}
         />
-        {/*<Controller*/}
-        {/*  control={control}*/}
-        {/*  name="price"*/}
-        {/*  render={({ field, fieldState }) => (*/}
-        {/*    <ControlledListBox*/}
-        {/*      type="number"*/}
-        {/*      label="Price*"*/}
-        {/*      onChange={field.onChange}*/}
-        {/*      value={field.value}*/}
-        {/*      description="Price of the product"*/}
-        {/*      errorMessage={fieldState.error?.message}*/}
-        {/*    />*/}
-        {/*  )}*/}
-        {/*/>*/}
+        <Controller
+          control={control}
+          name="category"
+          render={({ field, fieldState }) => (
+            <CategorySelector
+              label="Category*"
+              description="Relates to"
+              errorMessage={fieldState.error?.message}
+              activeCategory={field.value.value}
+              onChange={(value) => field.onChange(value)}
+            />
+          )}
+        />
         <Controller
           control={control}
           name="longDescription"
@@ -123,20 +127,13 @@ export const AddProductForm = () => {
               value={field.value}
               errorMessage={fieldState.error?.message}
               onChange={field.onChange}
-              label="Long Description"
+              label="Long Description*"
               description="Describe product in detail"
             />
           )}
         />
       </Fieldset>
-      <Button
-        className="w-full mt-4"
-        disabled={!isValid}
-        variants={["md", "dark"]}
-        type="submit"
-      >
-        Submit
-      </Button>
+      <SubmitButton disabled={!isValid} />
     </form>
   );
 };
