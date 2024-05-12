@@ -27,11 +27,11 @@ export class ApiServiceBase {
   }
 
   // TODO: generic
-  protected async post(
+  protected async post<T>(
     url: string,
     body: BodyInit | null | undefined,
     { headers }: IRequestOptions = {},
-  ) {
+  ): Promise<T> {
     try {
       const response = await fetch(`${this.API_URL}/${url}`, {
         method: "POST",

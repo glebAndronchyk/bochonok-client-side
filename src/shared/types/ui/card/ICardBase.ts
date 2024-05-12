@@ -1,5 +1,8 @@
+import { ElementType, ReactNode } from "react";
+
 export interface ICardBase {
-  imgSrc: string;
+  img: ReactNode | string;
   title: string;
   description: string;
+  as?: ElementType;
 }

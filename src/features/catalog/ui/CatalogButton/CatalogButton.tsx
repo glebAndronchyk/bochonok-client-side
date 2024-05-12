@@ -1,4 +1,4 @@
-import { Button } from "../../../../shared/ui/Button/Button";
+import { Button } from "../../../../shared/ui";
 import { IButtonProps } from "../../../../shared/ui/Button/types";
 
 interface ICatalogButtonProps extends Pick<IButtonProps, "onClick"> {}

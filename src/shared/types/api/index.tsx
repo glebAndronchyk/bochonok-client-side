@@ -1,2 +1,2 @@
 export type { IRequestOptions } from "./IRequestOptions";
-export * from "./catalog";
+export * from "./category";

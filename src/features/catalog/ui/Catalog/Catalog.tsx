@@ -2,12 +2,20 @@ import { ICatalogProps } from "../../types/ICatalogProps";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { CatalogButton } from "../CatalogButton/CatalogButton";
 import { Card } from "../../../../shared/ui";
-import { ScaleTransition } from "../../../../shared/ui/transitions/ScaleTransition";
+import { ScaleTransition } from "../../../../shared/ui";
+import { useRootState } from "../../../../shared/wrappers/MobxProvider";
+import { PlusIcon, StarIcon } from "@heroicons/react/20/solid";
 
 export const Catalog = ({ items }: ICatalogProps) => {
+  const { modal } = useRootState();
+
+  const handleAddCategory = () => {
+    modal.openModal("addCategory");
+  };
+
   return (
     <Menu>
-      {({ open }) => (
+      {({ open, close }) => (
         <>
           <MenuButton as="div">
             <CatalogButton />
@@ -15,23 +23,31 @@ export const Catalog = ({ items }: ICatalogProps) => {
           <ScaleTransition shown={open}>
             <MenuItems
               anchor="bottom start"
-              className="bg-white p-4 rounded-lg shadow-lg overflow-y-scroll no-scrollbar"
+              className="bg-white p-4 rounded-lg shadow-lg overflow-y-scroll no-scrollbar w-96"
             >
               {items.map((item) => (
-                <Card.Horizontal
-                  onClick={() => {}}
-                  key={item.id}
-                  description={item.description}
-                  title={item.title}
-                  imgSrc={item.imageB64}
-                />
+                <div className="relative">
+                  <Card.Horizontal
+                    onClick={() => {}}
+                    key={item.id}
+                    description={item.description}
+                    title={item.title}
+                    img={item.imageB64}
+                  />
+                  {item.isFavorite && (
+                    <StarIcon className="w-5 h-5 text-yellow-400 absolute top-2 right-2" />
+                  )}
+                </div>
               ))}
               <Card.Horizontal
-                onClick={() => {}}
+                onClick={() => {
+                  close();
+                  handleAddCategory();
+                }}
                 key="add-category"
                 description="Press to add category"
                 title="New Category"
-                imgSrc={""}
+                img={<PlusIcon className="w-5 h-5" />}
               />
             </MenuItems>
           </ScaleTransition>
