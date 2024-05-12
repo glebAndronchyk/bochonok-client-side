@@ -15,9 +15,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <MobxProvider>
       <InitFetchersWrapper>
         <ModalWrapper>
-          <Layout>
-            <RoutesProvider />
-          </Layout>
+          <RoutesProvider />
         </ModalWrapper>
       </InitFetchersWrapper>
     </MobxProvider>

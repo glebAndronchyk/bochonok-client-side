@@ -1,7 +1,6 @@
 import { Fieldset } from "@headlessui/react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ICategoryTransfer } from "../../../shared/types/api/category/ICategory";
 import { CategorySchema } from "../../../shared/schemas/CategorySchema";
 import { useRootState } from "../../../shared/wrappers/MobxProvider";
 import { FileParser } from "../../../shared/lib/parsers/FileParser";
@@ -12,6 +11,10 @@ import {
   InputField,
 } from "../../../shared/ui";
 import { catalogService } from "../../catalog";
+import {
+  ICategoryTransferB64,
+  ICategoryTransfer,
+} from "../../../shared/types/api/category";
 
 const initialState: ICategoryTransfer = {
   description: "",
@@ -35,7 +38,7 @@ export const AddCategoryForm = () => {
 
   const onSubmit = async ({ image, ...data }: ICategoryTransfer) => {
     const imageB64 = await FileParser.tob64(image!);
-    const category = {
+    const category: ICategoryTransferB64 = {
       ...data,
       imageB64,
     };

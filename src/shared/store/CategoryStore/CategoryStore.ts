@@ -1,18 +1,18 @@
 import { makeAutoObservable } from "mobx";
-import { ICategoryNumerated } from "../../types/api";
+import { ICategory } from "../../types/api/category";
 
 export class CategoryStore {
-  catalogList: ICategoryNumerated[] = [];
+  catalogList: ICategory[] = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setCatalogList(list: ICategoryNumerated[]) {
+  setCatalogList(list: ICategory[]) {
     this.catalogList = [...list];
   }
 
-  addCatalogItem(item: ICategoryNumerated) {
+  addCatalogItem(item: ICategory) {
     this.catalogList.push(item);
   }
 }

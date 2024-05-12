@@ -1,6 +1,6 @@
 import { z as x, ZodType } from "zod";
-import { ICategoryTransfer } from "../types/api/category/ICategory";
 import { ValidationHandler } from "../lib/schemas";
+import { ICategoryTransfer } from "../types/api/category";
 
 export const CategorySchema: ZodType<ICategoryTransfer> = x.object({
   title: ValidationHandler.requiredString("Title", 15),

@@ -1,6 +1,8 @@
 import { ApiServiceBase } from "../../../../shared/api/ApiServiceBase";
-import { ICategoryNumerated } from "../../../../shared/types/api";
-import { ICategoryBase } from "../../../../shared/types/api/category/ICategory";
+import {
+  ICategory,
+  ICategoryTransferB64,
+} from "../../../../shared/types/api/category";
 
 export class CatalogService extends ApiServiceBase {
   constructor() {
@@ -8,10 +10,10 @@ export class CatalogService extends ApiServiceBase {
   }
 
   getFullCatalog = async () => {
-    return await this.get<ICategoryNumerated[]>("Categories/");
+    return await this.get<ICategory[]>("Categories/");
   };
 
-  addCategory = async (category: ICategoryBase) => {
+  addCategory = async (category: ICategoryTransferB64) => {
     return await this.post<string>("Categories/", JSON.stringify(category));
   };
 }
