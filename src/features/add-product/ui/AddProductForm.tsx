@@ -4,6 +4,7 @@ import { IProductTransfer } from "../../../shared/types/api/product";
 import { ProductSchema } from "../../../shared/schemas/ProductSchema";
 import { Button, FileUploadInput, InputField } from "../../../shared/ui";
 import { Fieldset } from "@headlessui/react";
+import { Textarea } from "../../../shared/ui/Textarea/Textarea";
 
 const initialState: IProductTransfer = {
   title: "",
@@ -65,24 +66,11 @@ export const AddProductForm = () => {
           render={({ field, fieldState }) => (
             <FileUploadInput
               label="Upload image*"
-              description="Provide an image with ONLY ONE object in contrast"
+              description="Your product image"
               onChange={(event) => {
                 field.onChange(event.target.files![0]);
               }}
               accept="image/*"
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name="longDescription"
-          render={({ field, fieldState }) => (
-            <InputField
-              label="Enter Long Description*"
-              onChange={field.onChange}
-              value={field.value}
-              description="Explaint product in detail"
-              errorMessage={fieldState.error?.message}
             />
           )}
         />
@@ -127,6 +115,19 @@ export const AddProductForm = () => {
         {/*    />*/}
         {/*  )}*/}
         {/*/>*/}
+        <Controller
+          control={control}
+          name="longDescription"
+          render={({ field, fieldState }) => (
+            <Textarea
+              value={field.value}
+              errorMessage={fieldState.error?.message}
+              onChange={field.onChange}
+              label="Long Description"
+              description="Describe product in detail"
+            />
+          )}
+        />
       </Fieldset>
       <Button
         className="w-full mt-4"
