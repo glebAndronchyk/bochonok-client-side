@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { ICategory } from "../../types/api/category";
+import { IListBoxValue } from "../../ui/ListBox/types";
 
 export class CategoryStore {
   catalogList: ICategory[] = [];
@@ -14,6 +15,13 @@ export class CategoryStore {
 
   addCatalogItem(item: ICategory) {
     this.catalogList.push(item);
+  }
+
+  toListBoxFormat(item: ICategory): IListBoxValue {
+    return {
+      value: item.id,
+      label: item.title,
+    };
   }
 
   find(id: string) {
