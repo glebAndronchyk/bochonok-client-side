@@ -23,18 +23,20 @@ export const ListBox = ({ selectedValue, values, ...props }: IListBoxProps) => {
               className="no-scrollbar [--anchor-gap:1rem] w-28 p-2 bg-white rounded-md shadow-xl "
               anchor="bottom"
             >
-              {values.map((value) => (
+              {values.map((item) => (
                 <ListboxOption
                   as="li"
                   className=" flex items-center justify-between list-none data-[focus]:bg-green-500  rounded-md cursor-pointer p-1
                   data-[focus]:text-white  data-[focus]:transition-all data-[focus]:duration-200 data-[focus]:ease-in-out data-[focus]:hover:bg-green-500 data-[focus]:hover:text-white"
-                  key={value.value}
-                  value={value}
+                  key={item.value}
+                  value={item}
                 >
                   {({ selected }) => (
                     <>
-                      {value.label}
-                      {selected && <CheckIcon className="w-5 h-5" />}
+                      {item.label}
+                      {(selected || selectedValue.value === item.value) && (
+                        <CheckIcon className="w-5 h-5" />
+                      )}
                     </>
                   )}
                 </ListboxOption>

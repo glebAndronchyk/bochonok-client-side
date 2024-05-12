@@ -24,7 +24,11 @@ export class CategoryStore {
     };
   }
 
-  find(id: string) {
+  find(id?: string | null) {
+    if (!id) {
+      return null;
+    }
+
     return this.catalogList.find((item) => item.id === id);
   }
 }

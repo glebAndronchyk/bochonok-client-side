@@ -30,11 +30,12 @@ export const CategorySelector = observer(
     );
 
     const selectedCategory = useMemo(() => {
-      if (activeCategory === null) {
+      const activeCategoryFromList = categories.find(activeCategory);
+      if (activeCategory === null || !activeCategoryFromList) {
         return allValue;
       }
 
-      return categories.toListBoxFormat(categories.find(activeCategory)!);
+      return categories.toListBoxFormat(activeCategoryFromList);
     }, [activeCategory]);
 
     const handleCategoryChange = (listboxValue: IListBoxValue) => {
