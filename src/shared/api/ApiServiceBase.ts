@@ -1,4 +1,4 @@
-import { IRequestOptions } from "../types/api";
+import { IRequestOptions } from "../types/api/IRequestOptions";
 
 export class ApiServiceBase {
   API_URL = "http://localhost:3001/api" as const;

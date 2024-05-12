@@ -10,11 +10,11 @@ import {
   FileUploadInput,
   InputField,
 } from "../../../shared/ui";
-import { catalogService } from "../../catalog";
 import {
   ICategoryTransferB64,
   ICategoryTransfer,
 } from "../../../shared/types/api/category";
+import { catalogService } from "../../../shared/api/CatalogService";
 
 const initialState: ICategoryTransfer = {
   description: "",

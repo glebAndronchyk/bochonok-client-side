@@ -6,7 +6,6 @@ export const ProductsList = () => {
     <div>
       <ListHeader />
       <ListComponent />
-
     </div>
   );
 };

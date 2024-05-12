@@ -1,8 +1,5 @@
-import { ApiServiceBase } from "../../../../shared/api/ApiServiceBase";
-import {
-  ICategory,
-  ICategoryTransferB64,
-} from "../../../../shared/types/api/category";
+import { ApiServiceBase } from "../ApiServiceBase";
+import { ICategory, ICategoryTransferB64 } from "../../types/api/category";
 
 export class CatalogService extends ApiServiceBase {
   constructor() {

@@ -1,5 +1,5 @@
 import { Logo } from "../../../shared/ui";
-import { Catalog, catalogService } from "../../../features/catalog";
+import { Catalog } from "../../../features/catalog";
 import { observer } from "mobx-react";
 import { useRootState } from "../../../shared/wrappers/MobxProvider";
 
