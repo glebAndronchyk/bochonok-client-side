@@ -14,7 +14,7 @@ export const ListBox = ({ selectedValue, values, ...props }: IListBoxProps) => {
     <Listbox {...props} as="ul" value={selectedValue} defaultValue={values[0]}>
       {({ open }) => (
         <>
-          <ListboxButton className="relative flex text-white bg-green-500 rounded-md px-2 py-0.5">
+          <ListboxButton className="relative gap-1 flex text-white bg-green-500 rounded-md px-2 py-0.5">
             {selectedValue.label}
             <Chevron open={open} />
           </ListboxButton>
