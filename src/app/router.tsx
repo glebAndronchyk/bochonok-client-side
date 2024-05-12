@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { ProductsList } from "../entities/products-list";
 
 export class Router {
   constructor() {}
@@ -7,11 +8,11 @@ export class Router {
     return createBrowserRouter([
       {
         path: "/",
-        element: <div>hh</div>,
+        element: <ProductsList />,
       },
       {
-        path: "/aaaa",
-        element: <div>test</div>,
+        path: "/product",
+        element: <div>Product page</div>,
       },
     ]);
   }
