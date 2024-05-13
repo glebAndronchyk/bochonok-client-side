@@ -29,7 +29,7 @@ export const Catalog = ({ items }: ICatalogProps) => {
           <ScaleTransition shown={open}>
             <MenuItems
               anchor="bottom start"
-              className="bg-white p-4 rounded-lg shadow-lg overflow-y-scroll no-scrollbar w-96"
+              className="bg-white p-4 rounded-lg shadow-lg overflow-y-scroll no-scrollbar w-96 z-20"
             >
               {items.map((item) => (
                 <div className="relative">

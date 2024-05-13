@@ -27,7 +27,7 @@ export const ProductCard = ({
       className="p-4 h-[27rem] transition-all active:scale-[102%] hover:scale-[102%] bg-white shadow-xl rounded-md flex flex-col gap-6 cursor-pointer"
     >
       <div className="w-full rounded-md overflow-hidden flex-[3] relative bg-gray-200">
-        <div className="absolute top-0 right-0 bg-yellow-200 items-center rounded-md p-2 text-lg flex gap-2 z-20">
+        <div className="absolute top-0 right-0 bg-yellow-200 items-center rounded-md p-2 text-lg flex gap-2 z-10">
           <span className="font-semibold">{rating}</span>
           <StarIcon className="relative -top-[0.10rem] text-yellow-500 w-6 h-6" />
         </div>
