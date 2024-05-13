@@ -3,10 +3,9 @@ import { PointerEvent } from "react";
 import { ISimplifiedProduct } from "../../types/api/product";
 import { ShoppingCartIcon, StarIcon } from "@heroicons/react/20/solid";
 import { Button } from "../Button/Button";
+import { Link } from "react-router-dom";
 
-interface IProductCardProps extends Omit<ISimplifiedProduct, "id"> {
-  onClick: () => void;
-}
+interface IProductCardProps extends ISimplifiedProduct {}
 
 export const ProductCard = ({
   title,
@@ -15,15 +14,15 @@ export const ProductCard = ({
   price,
   imageB64,
   soldBy,
-  onClick,
+  id,
 }: IProductCardProps) => {
   const onAddToCart = (e: PointerEvent) => {
     console.log(e);
   };
 
   return (
-    <div
-      onClick={onClick}
+    <Link
+      to={`/product/${id}`}
       className="p-4 h-[27rem] transition-all active:scale-[102%] hover:scale-[102%] bg-white shadow-xl rounded-md flex flex-col gap-6 cursor-pointer"
     >
       <div className="w-full rounded-md overflow-hidden flex-[3] relative bg-gray-200">
@@ -61,6 +60,6 @@ export const ProductCard = ({
           </Button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

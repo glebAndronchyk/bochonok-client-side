@@ -5,7 +5,6 @@ import { EmptyList } from "../../../../shared/ui/EmptyList/EmptyList";
 import { observer } from "mobx-react";
 import { classNames } from "../../../../shared/lib/helpers/classNames";
 import { Button, ProductCard } from "../../../../shared/ui";
-import { useNavigate } from "react-router-dom";
 
 interface IListComponentProps {
   activeCategory: string | null;
@@ -15,7 +14,6 @@ interface IListComponentProps {
 export const ListComponent = observer(
   ({ activeCategory }: IListComponentProps) => {
     const { products, modal } = useRootState();
-    const navigate = useNavigate();
 
     useEffect(() => {
       productsService.getProductsList(activeCategory).then((productsList) => {
@@ -47,18 +45,9 @@ export const ListComponent = observer(
             />
           ) : (
             <>
-              {products.simplifiedProducts.map((product) => {
-                const handleProductClick = () =>
-                  navigate(`product/${product.id}`);
-
-                return (
-                  <ProductCard
-                    key={product.id}
-                    onClick={handleProductClick}
-                    {...product}
-                  />
-                );
-              })}
+              {products.simplifiedProducts.map((product) => (
+                <ProductCard key={product.id} {...product} />
+              ))}
             </>
           )}
         </div>

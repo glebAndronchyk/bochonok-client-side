@@ -20,7 +20,7 @@ export class Router {
             element: <ProductsList />,
           },
           {
-            path: "/product",
+            path: "/product/:id",
             element: <div>Product page</div>,
           },
         ],
