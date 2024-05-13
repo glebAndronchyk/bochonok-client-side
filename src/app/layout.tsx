@@ -1,11 +1,16 @@
 import { Header } from "../widgets/Header";
-import React, { PropsWithChildren } from "react";
+import React from "react";
+import { Outlet } from "react-router";
 
-export const Layout = ({ children }: PropsWithChildren) => {
+export const Layout = () => {
   return (
     <>
       <Header />
-      {children}
+      <main className="w-full h-full flex flex-col items-center">
+        <div className="p-6 max-w-[80vw] w-full">
+          <Outlet />
+        </div>
+      </main>
     </>
   );
 };

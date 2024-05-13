@@ -1,14 +1,5 @@
-export interface ICategoryNumerated extends ICategoryBase {
-  id: string;
-}
+import { IDescribedNumeratedItem } from "../IDescribedNumeratedItem";
 
-export interface ICategoryBase {
-  title: string;
-  description: string;
-  imageB64: string;
+export interface ICategory extends IDescribedNumeratedItem {
   isFavorite: boolean;
-}
-
-export interface ICategoryTransfer extends Omit<ICategoryBase, "imageB64"> {
-  image: File | null;
 }
