@@ -51,7 +51,7 @@ export const ListComponent = observer(
             </>
           )}
         </div>
-        {products.simplifiedProducts.length && (
+        {!!products.simplifiedProducts.length && (
           <Button
             variants={["dark", "md"]}
             className="w-full mt-4"
