@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { ProductsList } from "../entities/products-list";
 import { Layout } from "./layout";
 import { InitFetchersWrapper } from "../shared/wrappers/InitFetchersWrapper/InitFetchersWrapper";
+import { ProductInfo } from "../entities/product-info";
 
 export class Router {
   constructor() {}
@@ -21,7 +22,7 @@ export class Router {
           },
           {
             path: "/product/:id",
-            element: <div>Product page</div>,
+            element: <ProductInfo />,
           },
         ],
       },

@@ -8,4 +8,6 @@ export { FileUploadInput } from "./FileUploadInput/FileUploadInput";
 export { SubmitButton } from "./SubmitButton/SubmitButton";
 export { CategoriesListBox } from "./CategoriesListBox/CategoriesListBox";
 export { ProductCard } from "./ProductCard/ProductCard";
+export { LayoutWrapper } from "./LayoutWrapper/LayoutWrapper";
+export { Breadcrumbs } from "./Breadcrumbs/Breadcrumbs";
 export * from "./transitions";
