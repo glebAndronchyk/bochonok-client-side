@@ -3,6 +3,7 @@ import { ProductsList } from "../entities/products-list";
 import { Layout } from "./layout";
 import { InitFetchersWrapper } from "../shared/wrappers/InitFetchersWrapper/InitFetchersWrapper";
 import { ProductInfo } from "../entities/product-info";
+import { ModalWrapper } from "../shared/wrappers/ModalWrapper";
 
 export class Router {
   constructor() {}
@@ -11,9 +12,11 @@ export class Router {
     return createBrowserRouter([
       {
         element: (
-          <InitFetchersWrapper>
-            <Layout />
-          </InitFetchersWrapper>
+          <ModalWrapper>
+            <InitFetchersWrapper>
+              <Layout />
+            </InitFetchersWrapper>
+          </ModalWrapper>
         ),
         children: [
           {

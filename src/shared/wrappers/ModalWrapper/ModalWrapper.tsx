@@ -13,6 +13,7 @@ export const ModalWrapper = observer(({ children }: PropsWithChildren) => {
         shown={modal.isOpen}
         modalKey={modal.currentModalKey}
         onClose={modal.closeModal}
+        contentProps={modal.props}
       />
     </>
   );
