@@ -4,7 +4,7 @@ import { IListBoxValue } from "../../../ui/ListBox/types";
 export interface IProductTransfer
   extends Omit<
     IProduct,
-    "id" | "rating" | "totalRating" | "totalRated" | "imageB64" | "categoryId"
+    "id" | "rating" | "totalRating" | "totalRated" | "imageB64" | "categoryId" | "salePrice"
   > {
   category: IListBoxValue;
   image: File | null;
