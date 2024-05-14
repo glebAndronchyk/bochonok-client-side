@@ -1,9 +1,8 @@
-import { PointerEvent } from "react";
-
 import { ISimplifiedProduct } from "../../types/api/product";
-import { ShoppingCartIcon, StarIcon } from "@heroicons/react/20/solid";
-import { Button } from "../Button/Button";
+import { StarIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
+import { Price } from "../Price/Price";
+import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 
 interface IProductCardProps extends ISimplifiedProduct {}
 
@@ -15,11 +14,8 @@ export const ProductCard = ({
   imageB64,
   soldBy,
   id,
+  salePrice,
 }: IProductCardProps) => {
-  const onAddToCart = (e: PointerEvent) => {
-    console.log(e);
-  };
-
   return (
     <Link
       to={`/product/${id}`}
@@ -45,19 +41,8 @@ export const ProductCard = ({
           <p className="text-gray-500 text-sm">Sold by: {soldBy}</p>
         </div>
         <div className="flex flex-col gap-1 items-center self-stretch">
-          <p>
-            <span className="text-green-500 text-3xl font-semibold">
-              {price}
-            </span>{" "}
-            <span className="text-gray-500 text-xl font-medium">hrn.</span>
-          </p>
-          <Button
-            variants={["dark", "md"]}
-            className="p-2"
-            onPointerDown={onAddToCart}
-          >
-            <ShoppingCartIcon className="w-6 h-6" />
-          </Button>
+          <Price price={price} salePrice={salePrice} />
+          <AddToCartButton />
         </div>
       </div>
     </Link>

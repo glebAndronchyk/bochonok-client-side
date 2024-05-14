@@ -10,4 +10,6 @@ export { CategoriesListBox } from "./CategoriesListBox/CategoriesListBox";
 export { ProductCard } from "./ProductCard/ProductCard";
 export { LayoutWrapper } from "./LayoutWrapper/LayoutWrapper";
 export { Breadcrumbs } from "./Breadcrumbs/Breadcrumbs";
+export { Price } from "./Price/Price";
+export { AddToCartButton } from "./AddToCartButton/AddToCartButton";
 export * from "./transitions";

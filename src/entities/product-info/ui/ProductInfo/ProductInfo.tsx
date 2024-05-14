@@ -15,7 +15,7 @@ export const ProductInfo = () => {
 
   return (
     <LayoutWrapper>
-      <Breadcrumbs />
+      <Breadcrumbs product={product} />
       {product && <ProductInfoCard product={product} />}
     </LayoutWrapper>
   );

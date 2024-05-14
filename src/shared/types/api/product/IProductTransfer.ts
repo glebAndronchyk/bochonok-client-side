@@ -11,4 +11,4 @@ export interface IProductTransfer
 }
 
 export interface IProductTransferB64
-  extends Omit<IProduct, "id" | "rating" | "totalRating" | "totalRated"> {}
+  extends Omit<IProduct, "id" | "rating" | "totalRating" | "totalRated" | "salePrice"> {}
