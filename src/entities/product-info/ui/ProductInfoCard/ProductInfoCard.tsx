@@ -36,11 +36,11 @@ export const ProductInfoCard = ({ product }: IProductInfoCardProps) => {
           <p>{product.totalRated}</p>
           <p>{product.rating}</p>
         </CardElement>
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-6 flex justify-between items-center">
           <Price price={product.price} salePrice={product.salePrice} />
           <AddToCartButton />
         </div>
-        <div className="w-full text-gray-500 flex justify-between items-center text-sm absolute left-0 bottom-0">
+        <div className="w-full mt-6 text-gray-500 flex justify-between items-center text-sm">
           <span>CategoryId: {product.categoryId}</span>
           <Button onClick={onShare} variants={["dark", "rounded"]}>
             <ShareIcon className="w-6 h-6" />
