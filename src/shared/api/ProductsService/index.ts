@@ -1,5 +1,9 @@
 import { ApiServiceBase } from "../ApiServiceBase";
-import { IProduct, ISimplifiedProduct } from "../../types/api/product";
+import {
+  IProduct,
+  IProductRating,
+  ISimplifiedProduct,
+} from "../../types/api/product";
 import { IProductTransferB64 } from "../../types/api/product/IProductTransfer";
 
 export class ProductsService extends ApiServiceBase {
@@ -27,9 +31,9 @@ export class ProductsService extends ApiServiceBase {
   };
 
   changeProductRating = async (id: string, rating: number) => {
-    return await this.post<string>(
+    return await this.post<IProductRating>(
       `Products/${id}/Rating`,
-      JSON.stringify({ newRating: rating }),
+      JSON.stringify({ rating }),
     );
   };
 }

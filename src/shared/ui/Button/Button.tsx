@@ -11,17 +11,14 @@ export const Button = ({
   ...props
 }: IButtonProps) => {
   const aggregatedClassName = useMemo(() => {
-    return (
-      variants.reduce((acc, curr) => `${acc} ${VariantsMap[curr]}`, "") +
-      " " +
-      className
-    );
+    return variants.reduce((acc, curr) => `${acc} ${VariantsMap[curr]}`, "");
   }, [variants]);
 
   return (
     <HButton
       className={classNames(
         "transition-all border-green-500",
+        className,
         aggregatedClassName,
       )}
       {...props}

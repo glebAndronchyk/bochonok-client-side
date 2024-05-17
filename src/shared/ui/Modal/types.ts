@@ -7,4 +7,6 @@ export interface IModalProps extends PropsWithChildren {
 }
 
 export interface ISimplifiedModalProps
-  extends Pick<IModalProps, "shown" | "onClose"> {}
+  extends Pick<IModalProps, "shown" | "onClose"> {
+  contentProps?: unknown | null;
+}

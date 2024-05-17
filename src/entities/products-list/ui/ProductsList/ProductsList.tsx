@@ -1,14 +1,15 @@
 import { ListComponent } from "../ListComponent/ListComponent";
 import { ListHeader } from "../ListhHeader/ListHeader";
 import { useCategoryParam } from "../../../../shared/lib/hooks/navigation/useCategoryParam";
+import { LayoutWrapper } from "../../../../shared/ui";
 
 export const ProductsList = () => {
   const activeCategory = useCategoryParam();
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4">
+    <LayoutWrapper>
       <ListHeader activeCategory={activeCategory} />
       <ListComponent activeCategory={activeCategory} />
-    </div>
+    </LayoutWrapper>
   );
 };

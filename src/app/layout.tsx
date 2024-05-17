@@ -7,7 +7,7 @@ export const Layout = () => {
     <>
       <Header />
       <main className="w-full h-full flex flex-col items-center">
-        <div className="p-6 max-w-[80vw] w-full">
+        <div className="p-6 max-w-[70vw] w-full">
           <Outlet />
         </div>
       </main>

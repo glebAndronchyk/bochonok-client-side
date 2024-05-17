@@ -5,18 +5,13 @@ import { Card } from "../../../../shared/ui";
 import { ScaleTransition } from "../../../../shared/ui";
 import { useRootState } from "../../../../shared/wrappers/MobxProvider";
 import { PlusIcon, StarIcon } from "@heroicons/react/20/solid";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Catalog = ({ items }: ICatalogProps) => {
   const { modal } = useRootState();
-  const navigate = useNavigate();
 
   const handleAddCategory = () => {
     modal.openModal("addCategory");
-  };
-
-  const handleCategoryClick = (id: string) => {
-    navigate(`/?category=${id}`);
   };
 
   return (
@@ -32,12 +27,9 @@ export const Catalog = ({ items }: ICatalogProps) => {
               className="bg-white p-4 rounded-lg shadow-lg overflow-y-scroll no-scrollbar w-96 z-20"
             >
               {items.map((item) => (
-                <div className="relative">
+                <Link to={`/?category=${item.id}`} className="relative">
                   <Card.Horizontal
-                    onClick={() => {
-                      close();
-                      handleCategoryClick(item.id);
-                    }}
+                    onClick={close}
                     key={item.id}
                     description={item.description}
                     title={item.title}
@@ -46,7 +38,7 @@ export const Catalog = ({ items }: ICatalogProps) => {
                   {item.isFavorite && (
                     <StarIcon className="w-5 h-5 text-yellow-400 absolute top-2 right-2" />
                   )}
-                </div>
+                </Link>
               ))}
               <Card.Horizontal
                 onClick={() => {
