@@ -19,13 +19,16 @@ export const ProductInfoCard = ({ product }: IProductInfoCardProps) => {
 
   return (
     <div className="p-8 flex gap-6 justify-between relative">
-      <div className="break-all flex-1 relative">
-        <CardElement>
+      <div className="h-[37rem] rounded-md relative bg-gray-200 flex-1">
+        <Image src={product.imageB64} className="p-6" alt="product-image" />
+      </div>
+      <div className="break-all flex-1 relative gap-4 flex flex-col">
+        <CardElement className="mb-6">
           <p className="pl-2 text-gray-500 text-md">
             Sold By: {product.soldBy} - {product.id}
           </p>
-          <h3 className="text-8xl">{product.title}</h3>
         </CardElement>
+        <h3 className="text-6xl">{product.title}</h3>
         <CardElement>
           <p className="text-xl">{product.description}</p>
           <p className="py-2 border-t-2 border-b-2 text-xl border-green-500">
@@ -46,9 +49,6 @@ export const ProductInfoCard = ({ product }: IProductInfoCardProps) => {
             <ShareIcon className="w-6 h-6" />
           </Button>
         </div>
-      </div>
-      <div className="h-[37rem] rounded-md relative bg-gray-200 flex-1">
-        <Image src={product.imageB64} className="p-6" alt="product-image" />
       </div>
     </div>
   );
