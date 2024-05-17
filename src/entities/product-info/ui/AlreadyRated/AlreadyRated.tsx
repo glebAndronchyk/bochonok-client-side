@@ -8,8 +8,8 @@ interface IAlreadyRatedProps {
 export const AlreadyRated = ({ rating, totalRated }: IAlreadyRatedProps) => {
   return (
     <div className="flex gap-2 items-center italic">
-      <StarRating readonly rating={rating} /> - {rating} - Total rated:{" "}
-      {totalRated}
+      <StarRating allowFraction={true} readonly={true} rating={rating} /> -{" "}
+      {rating} - Total rated: {totalRated}
     </div>
   );
 };

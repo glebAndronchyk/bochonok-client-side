@@ -10,12 +10,17 @@ const FillStar = () => {
   return <StarIcon className="inline w-6 h-6" />;
 };
 
-export const StarRating = ({ rating, readonly, ...props }: StarRatingProps) => {
+export const StarRating = ({
+  rating,
+  readonly,
+  allowFraction,
+  ...props
+}: StarRatingProps) => {
   return (
     <Rating
       transition={true}
       readonly={readonly}
-      allowFraction={false}
+      allowFraction={allowFraction}
       initialValue={rating}
       onClick={"onRatingChange" in props ? props.onRatingChange : () => {}}
       iconsCount={5}

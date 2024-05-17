@@ -1,10 +1,12 @@
 interface IInteractiveStarRating {
   onRatingChange: (val: number) => void;
   readonly?: false;
+  allowFraction?: false;
 }
 
 interface IReadonlyStarRating {
   readonly: true;
+  allowFraction: true;
 }
 
 interface ICommonStarRatingProps {
