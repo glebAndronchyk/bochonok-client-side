@@ -1,5 +1,5 @@
 import { IProduct } from "../../../../shared/types/api/product";
-import { AddToCartButton, Button, Price } from "../../../../shared/ui";
+import { AddToCartButton, Button, Image, Price } from "../../../../shared/ui";
 import { ShareIcon } from "@heroicons/react/20/solid";
 import { useRootState } from "../../../../shared/wrappers/MobxProvider";
 import { CardElement } from "../CardElement/CardElement";
@@ -48,11 +48,7 @@ export const ProductInfoCard = ({ product }: IProductInfoCardProps) => {
         </div>
       </div>
       <div className="h-[37rem] rounded-md relative bg-gray-200 flex-1">
-        <img
-          src={product.imageB64}
-          className="absolute object-contain w-full h-full p-6"
-          alt="product-image"
-        />
+        <Image src={product.imageB64} className="p-6" alt="product-image" />
       </div>
     </div>
   );

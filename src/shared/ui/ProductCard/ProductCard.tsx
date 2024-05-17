@@ -3,6 +3,7 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { Price } from "../Price/Price";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
+import {Image} from "../Image/Image";
 
 interface IProductCardProps extends ISimplifiedProduct {}
 
@@ -26,9 +27,9 @@ export const ProductCard = ({
           <span className="font-semibold">{rating}</span>
           <StarIcon className="relative -top-[0.10rem] text-yellow-500 w-6 h-6" />
         </div>
-        <img
+        <Image
           src={imageB64}
-          className="block object-contain p-3 absolute rounded-md  w-full h-full"
+          className="block p-3 rounded-md"
           alt="product-image"
         />
       </div>

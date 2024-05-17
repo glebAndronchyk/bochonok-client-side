@@ -1,4 +1,4 @@
 export interface IQRCodes {
-  default: string;
-  category: string;
+  defaultQR: string;
+  categoryQR: string;
 }

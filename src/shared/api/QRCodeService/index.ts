@@ -7,7 +7,7 @@ export class QRCodeService extends ApiServiceBase {
   }
 
   getQRCodes = async (url: string, categoryId?: string | null) => {
-    return this.post<IQRCodes>("QrCodes/", JSON.stringify({ url, categoryId }));
+    return this.post<IQRCodes>("QRCode/", JSON.stringify( { url, categoryId }));
   };
 }
 

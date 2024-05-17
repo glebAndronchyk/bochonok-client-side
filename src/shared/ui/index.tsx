@@ -12,4 +12,5 @@ export { LayoutWrapper } from "./LayoutWrapper/LayoutWrapper";
 export { Breadcrumbs } from "./Breadcrumbs/Breadcrumbs";
 export { Price } from "./Price/Price";
 export { AddToCartButton } from "./AddToCartButton/AddToCartButton";
+export { Image } from "./Image/Image";
 export * from "./transitions";
