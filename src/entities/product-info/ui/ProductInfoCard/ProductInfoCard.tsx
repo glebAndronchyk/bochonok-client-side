@@ -3,6 +3,8 @@ import { AddToCartButton, Button, Image, Price } from "../../../../shared/ui";
 import { ShareIcon } from "@heroicons/react/20/solid";
 import { useRootState } from "../../../../shared/wrappers/MobxProvider";
 import { CardElement } from "../CardElement/CardElement";
+import { ProductRating } from "../ProductRating/ProductRating";
+import { AlreadyRated } from "../AlreadyRated/AlreadyRated";
 
 interface IProductInfoCardProps {
   product: IProduct;
@@ -36,8 +38,11 @@ export const ProductInfoCard = ({ product }: IProductInfoCardProps) => {
           </p>
         </CardElement>
         <CardElement>
-          <p>{product.totalRated}</p>
-          <p>{product.rating}</p>
+          <ProductRating productId={product.id} />
+          <AlreadyRated
+            rating={product.rating}
+            totalRated={product.totalRated}
+          />
         </CardElement>
         <div className="mt-6 flex justify-between items-center">
           <Price price={product.price} salePrice={product.salePrice} />
