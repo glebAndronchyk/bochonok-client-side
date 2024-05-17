@@ -3,12 +3,14 @@ import { CheckIcon } from "@heroicons/react/20/solid";
 import { Button } from "../../../../shared/ui";
 import { StarRating } from "../../../../shared/ui/StarRating/StarRating";
 import { productsService } from "../../../../shared/api/ProductsService";
+import { useProductState } from "../../lib/context/ProductContext";
 
-interface IProductRating {
+interface IProductRatingProps {
   productId: string;
 }
 
-export const ProductRating = ({ productId }: IProductRating) => {
+export const ProductRating = ({ productId }: IProductRatingProps) => {
+  const productState = useProductState();
   const [rating, setRating] = useState(0);
 
   const handleRatingChange = (val: number) => {
@@ -17,12 +19,16 @@ export const ProductRating = ({ productId }: IProductRating) => {
 
   const onSubmitRating = async () => {
     try {
-      const updatedProduct = await productsService.changeProductRating(
+      const updatedRating = await productsService.changeProductRating(
         productId,
         rating,
       );
+
+      productState.updateRating(updatedRating);
     } catch (e) {
       console.log(e);
+    } finally {
+      setRating(0);
     }
   };
 

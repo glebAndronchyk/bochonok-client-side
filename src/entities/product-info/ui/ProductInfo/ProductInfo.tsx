@@ -1,22 +1,28 @@
 import { Breadcrumbs, LayoutWrapper } from "../../../../shared/ui";
 import { ProductInfoCard } from "../ProductInfoCard/ProductInfoCard";
 import { useEffect, useState } from "react";
-import { IProduct } from "../../../../shared/types/api/product";
 import { productsService } from "../../../../shared/api/ProductsService";
 import { useParams } from "react-router";
+import { observer } from "mobx-react";
+import { ProductState } from "../../lib/state/ProductState";
+import { ProductContext } from "../../lib/context/ProductContext";
 
-export const ProductInfo = () => {
+export const ProductInfo = observer(() => {
   const { id } = useParams();
-  const [product, setProduct] = useState<IProduct | null>(null);
+  const [productState] = useState(() => new ProductState());
 
   useEffect(() => {
-    productsService.getProduct(id!).then((p) => setProduct(p));
+    productsService.getProduct(id!).then((p) => productState.setProduct(p));
   }, []);
 
   return (
-    <LayoutWrapper>
-      <Breadcrumbs product={product} />
-      {product && <ProductInfoCard product={product} />}
-    </LayoutWrapper>
+    <ProductContext.Provider value={productState}>
+      <LayoutWrapper>
+        <Breadcrumbs product={productState.product} />
+        {productState.product && (
+          <ProductInfoCard product={productState.product} />
+        )}
+      </LayoutWrapper>
+    </ProductContext.Provider>
   );
-};
+});
