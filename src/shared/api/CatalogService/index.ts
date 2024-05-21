@@ -11,7 +11,7 @@ export class CatalogService extends ApiServiceBase {
   };
 
   addCategory = async (category: ICategoryTransferB64) => {
-    return await this.post<string>("Categories/", JSON.stringify(category));
+    return await this.post<ICategory>("Categories/", JSON.stringify(category));
   };
 }
 
