@@ -43,8 +43,7 @@ export const AddProductForm = () => {
       imageB64,
       categoryId: category.value,
     };
-    const simplifiedProduct = await productsService.addProduct(product);
-    products.addSimplifiedProductItem(simplifiedProduct);
+    await products.requestSimplifiedProductAddition(product);
     modal.closeModal();
   };
 

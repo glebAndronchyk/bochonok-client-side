@@ -5,6 +5,7 @@ import { EmptyList } from "../../../../shared/ui/EmptyList/EmptyList";
 import { observer } from "mobx-react";
 import { classNames } from "../../../../shared/lib/helpers/classNames";
 import { Button, ProductCard } from "../../../../shared/ui";
+import { toJS } from "mobx";
 
 interface IListComponentProps {
   activeCategory: string | null;
@@ -16,9 +17,7 @@ export const ListComponent = observer(
     const { products, modal } = useRootState();
 
     useEffect(() => {
-      productsService.getProductsList(activeCategory).then((productsList) => {
-        products.setSimplifiedProductsList(productsList);
-      });
+      products.requestSimplifiedProductsList(activeCategory);
     }, [activeCategory]);
 
     const isWithProducts = products.simplifiedProducts.length > 0;

@@ -1,12 +1,23 @@
 import { makeAutoObservable } from "mobx";
-import { ICategory } from "../../types/api/category";
+import {ICategory, ICategoryTransferB64} from "../../types/api/category";
 import { IListBoxValue } from "../../ui/ListBox/types";
+import { catalogService } from "../../api/CatalogService";
 
 export class CategoryStore {
   catalogList: ICategory[] = [];
+  private _catalogService = catalogService;
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  async requestCatalogList() {
+    this.catalogList = await this._catalogService.getFullCatalog();
+  }
+
+  async requestCatalogItemAddition(item: ICategoryTransferB64) {
+    const categoryResponse = await this._catalogService.addCategory(item);
+    this.catalogList.push(categoryResponse);
   }
 
   setCatalogList(list: ICategory[]) {

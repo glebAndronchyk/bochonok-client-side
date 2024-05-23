@@ -32,8 +32,8 @@ const Horizontal = ({
     >
       {ImageComponent}
       <div>
-        <h3 className="font-bold mb-1.5">{title}</h3>
-        <span className="text-sm">{description}</span>
+        <h3 className="font-bold mb-1.5 truncate">{title}</h3>
+        <span className="text-sm truncate">{description}</span>
       </div>
     </WrapperComponent>
   );

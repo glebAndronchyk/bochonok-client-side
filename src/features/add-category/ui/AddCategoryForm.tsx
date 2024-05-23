@@ -42,8 +42,7 @@ export const AddCategoryForm = () => {
       ...data,
       imageB64,
     };
-    const newCategory = await catalogService.addCategory(category);
-    categories.addCatalogItem(newCategory);
+    await categories.requestCatalogItemAddition(category);
     modal.closeModal();
   };
 
